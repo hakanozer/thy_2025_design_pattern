@@ -20,4 +20,9 @@ public class CustomerRestController {
         return customerService.register(customer);
     }
 
+    @PostMapping("login")
+    public Customer login(@RequestBody Customer customer) {
+        return customerService.login(customer);
+    }
+
 }
