@@ -1,6 +1,8 @@
 package com.works.configs;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -19,6 +21,11 @@ public class GlobalException {
         map.put("status", HttpStatus.BAD_REQUEST.value());
         map.put("result", e.getMessage());
         return map;
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity methodArgumentNotValid(MethodArgumentNotValidException e ) {
+        return new ResponseEntity(e.getFieldErrors(), HttpStatus.BAD_REQUEST);
     }
 
 }

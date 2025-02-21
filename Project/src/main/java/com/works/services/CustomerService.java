@@ -23,6 +23,12 @@ public class CustomerService {
     final NotificationsService notificationsService;
 
     public Customer register(Customer customer) throws Exception{
+
+        Customer dbCustomer = customerRepository.save(customer);
+        notificationsService.emailSend("","",dbCustomer.getEmail());
+        return dbCustomer;
+
+        /*
         boolean tcValidStatus = ValidUtil.tcValid(customer.getTc());
         boolean passwordValidStatus = ValidUtil.passwordValid(customer.getPassword());
 
@@ -35,11 +41,13 @@ public class CustomerService {
             notificationsService.emailSend("","",dbCustomer.getEmail());
             return dbCustomer;
         }
+         */
 
     }
 
     public Customer login(Customer customer) {
         Optional<Customer> optionalCustomer = customerRepository.findByEmailEqualsIgnoreCaseAndPasswordEquals(customer.getEmail(), customer.getPassword());
+        BasketService basketService = new BasketService();
         if (optionalCustomer.isPresent()) {
             Customer customerDb = optionalCustomer.get();
             // security id
