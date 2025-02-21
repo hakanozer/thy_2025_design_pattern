@@ -1,5 +1,6 @@
 package com.works.configs;
 
+import com.works.desing_patterns.factory_method.CreateFabric;
 import com.works.utils.CustomerSecurity;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +13,7 @@ public class AppBeans {
 
     @Bean(name = "customerSecurity")
     public CustomerSecurity customerSecurity(HttpServletRequest httpServletRequest) {
+        System.out.println("customerSecurity call");
         return new CustomerSecurity(httpServletRequest);
     }
 
@@ -19,6 +21,13 @@ public class AppBeans {
     public Random customerRandom( CustomerSecurity customerSecurity ) {
         return new Random();
     }
+
+    /*
+    @Bean
+    public CreateFabric createFabric() {
+        return new CreateFabric();
+    }
+     */
 
     /*
     @Bean(name = "customerSecurityConfig")
