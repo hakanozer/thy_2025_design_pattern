@@ -24,4 +24,9 @@ public class ElectronicProduct implements IProductBuilder {
         return productRepository.findAll();
     }
 
+    @Override
+    public List<Product> searchProduct(String q) {
+        return productRepository.findByTitleContainsOrDescriptionContainsAllIgnoreCase(q,q);
+    }
+
 }

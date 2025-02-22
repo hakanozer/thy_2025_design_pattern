@@ -8,5 +8,5 @@ public interface IProductBuilder {
 
     Product createProduct(Product product);
     List<Product> productList();
-
+    List<Product> searchProduct(String q);
 }
