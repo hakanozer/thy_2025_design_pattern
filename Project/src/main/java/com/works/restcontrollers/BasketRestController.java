@@ -1,7 +1,6 @@
 package com.works.restcontrollers;
 
 import com.works.desing_patterns.adapter.BasketAdapter;
-import com.works.desing_patterns.bridge.Sample;
 import com.works.entities.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,6 @@ import java.util.List;
 public class BasketRestController {
 
     final BasketAdapter basketAdapter;
-    final Sample sample;
 
     @GetMapping("add/{pid}")
     public Product add(@PathVariable long pid) {
