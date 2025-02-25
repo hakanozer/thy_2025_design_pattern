@@ -7,6 +7,11 @@ import java.util.List;
 
 public class Util {
 
+    public final static String rest = "rest";
+    public final static String service = "service";
+    public final static String db = "db";
+    public final static String security = "security";
+
     public List<Customer> customerResult() {
         List<Customer> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
